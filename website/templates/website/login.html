@@ -1,15 +1,30 @@
 {% extends "base.html"%}
 
 
-{% content block %}
-<nav class="navbar bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand">Navbar</a>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </nav>
+{% block content %}
+
+{% if user.is_authenticated %}
+  <h1>
+    hello {{ user.username }} , you are already logged in!!
+  </h1>
+{% else %}
+
+<form method="POST" action="{% url 'login_user'%}">
+  {% csrf_token %}
+  <h1>Login Page</h1>
+  <br/>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Username</label> 
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" required>
+    <div id="emailHelp" class="form-text">We'll never share your Username with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endif %}
 
 {% endblock %}
+
