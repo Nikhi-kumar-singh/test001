@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+<form action="{% url 'add_user' %}" method="POST" class="mb-3  row gy-2 gx-3 align-items-center">
+    {% csrf_token %}
+    <input type="text" name="first_name" id="first_name" placeholder="first name...."><br>
+
+    <input type="text" name="last_name" id="last_name" placeholder="last name.."><br>
+
+    <input type="text" name="email" id="emai;" placeholder="abc@gmail.com"><br>
+
+    <input type="text" name="phone" id="phone" placeholder="phone : 9939XXXXXX"><br>
+
+    <input type="text" name="address" id="address" placeholder="address : x,y,z"><br>
+
+    <input type="text" name="city" id="city" placeholder="city : x,y,z"><br>
+
+    <input type="text" name="state" id="state" placeholder="state : x,y,z"><br>
+
+    <input type="text" name="zipcode" id="zipcode" placeholder="zipcode : x,y,z"><br>
+
+    <button type="submit">submit</button><br>
+</form>
+
+{% endblock %}
+
+
+
+

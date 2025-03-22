@@ -4,4 +4,24 @@
 	<h1>
 		welcome to Home Page
 	</h1>
+	{% if record %}
+		<table class="table table-striped table-hover table-border">
+			<thead class="table-dark">
+				<td>first name</td>
+				<td>last name</td>
+				<td>email</td>
+				<td>id</td>
+				<td>action</td>
+			</thead>
+		{% for rec in record %}
+				<tr>
+					<td>{{ rec.first_name }}</td>
+					<td>{{ rec.last_name }}</td>
+					<td>{{ rec.email }}</td>
+					<td><a href="{% url 'record_user' rec.id %}">{{ rec.id }}</a></td>
+					<td><a href="{% url 'delete_user' rec.id%}">delete</a></td>
+				</tr>
+		{% endfor %}
+	</table>
+	{% endif %}
 {% endblock %}
